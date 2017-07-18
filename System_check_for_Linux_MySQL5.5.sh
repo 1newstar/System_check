@@ -536,12 +536,5 @@ main(){
 
 echo "Start checking!"
 echo "......"
-main 2>err.txt
+main
 echo "Checking completed!"
-echo "=============================="
-echo "检查结果记录在test.txt文件中"
-echo "错误日志记录在err.txt文件中"
-echo "=============================="
-echo "以上文档均保存在当前目录下"
-
-
