@@ -108,7 +108,7 @@ mysql_table_total(){
 ### MySQL每个库已用 ###
 mysql_database_total(){
 	echo -e "4.7 MySQL各个库的空间使用情况"
-	mdt="SELECT   table_schema,SUM(data_length+index_length)/1024/1024 AS total_mb,SUM(data_length)/1024/1024 AS data_mb,SUM(index_length)/1024/1024 AS index_mb,COUNT(*) AS TABLES FROM     information_schema.tables GROUP BY table_schema ORDER BY 2 DESC;"
+	mdt="SELECT table_schema,round(SUM(data_length+index_length)/1024/1024,2) AS total_mb,round(SUM(data_length)/1024/1024,2) AS data_mb,round(SUM(index_length)/1024/1024,2) AS index_mb,COUNT(*) AS TABLES FROM information_schema.tables GROUP BY table_schema ORDER BY 2 DESC;"
 	mysql $mysql_cmd -e "${mdt}" 2>/dev/null
 	echo
 	echo "分析：MySQL表空间正常，磁盘压力很小"
